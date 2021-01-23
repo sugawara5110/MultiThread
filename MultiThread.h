@@ -4,6 +4,9 @@
 //**                                                                                     **//
 //*****************************************************************************************//
 
+#ifndef Class_MultiThread_Header
+#define Class_MultiThread_Header
+
 #include <windows.h>
 #include <process.h>
 #include <iostream>
@@ -11,6 +14,7 @@
 struct ThreadData {
 	bool end = false;
 	void(*pfunc)(void) = nullptr;
+	int eventNo = 0;
 };
 
 class MultiThread {
@@ -24,16 +28,7 @@ private:
 	static HANDLE eventEnd[numMaxThread];
 	static ThreadData th[numMaxThread];
 
-	static unsigned __stdcall thread0(void* data);
-	static unsigned __stdcall thread1(void* data);
-	static unsigned __stdcall thread2(void* data);
-	static unsigned __stdcall thread3(void* data);
-	static unsigned __stdcall thread4(void* data);
-	static unsigned __stdcall thread5(void* data);
-	static unsigned __stdcall thread6(void* data);
-	static unsigned __stdcall thread7(void* data);
-	static unsigned __stdcall thread8(void* data);
-	static unsigned __stdcall thread9(void* data);
+	static unsigned __stdcall thread(void* data);
 	static void setThread();
 
 public:
@@ -51,16 +46,7 @@ private:
 	static HANDLE ThreadHandle[numMaxThread];
 	static ThreadData th[numMaxThread];
 
-	static unsigned __stdcall thread0(void* data);
-	static unsigned __stdcall thread1(void* data);
-	static unsigned __stdcall thread2(void* data);
-	static unsigned __stdcall thread3(void* data);
-	static unsigned __stdcall thread4(void* data);
-	static unsigned __stdcall thread5(void* data);
-	static unsigned __stdcall thread6(void* data);
-	static unsigned __stdcall thread7(void* data);
-	static unsigned __stdcall thread8(void* data);
-	static unsigned __stdcall thread9(void* data);
+	static unsigned __stdcall thread(void* data);
 	static void setThread();
 
 public:
@@ -69,3 +55,5 @@ public:
 	static bool Status();
 	static void end();
 };
+
+#endif
