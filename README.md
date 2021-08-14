@@ -1,6 +1,7 @@
 # MultiThread
 
-//同期有り(繰り返し処理)
+////同期有り(繰り返し処理)////
+
 MultiThread th;
 
 th.setFunc(スレッド化したい関数1);(max10個)
@@ -17,7 +18,9 @@ th.wait();//全スレッド1ループ終わるまで待機
 
 th.end();//後始末
 
-//同期無し(繰り返し無し)
+
+////同期無し(繰り返し無し)////
+
 MultiThread_NotSync th;
 
 th.setFunc(スレッド化したい関数1);(max10個)
