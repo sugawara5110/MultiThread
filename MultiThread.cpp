@@ -22,6 +22,14 @@ void MultiThread::setFunc(void (*pf)(void)) {
 void MultiThread::setThread() {
 	for (unsigned int i = 0; i < numThread; i++)
 		ThreadHandle[i] = (HANDLE*)_beginthreadex(NULL, 0, thread, &th[i], 0, NULL);
+
+	bool f = true;
+	while (f) {
+		f = false;
+		for (unsigned int i = 0; i < numThread; i++) {
+			if (!ThreadHandle[i])f = true;
+		}
+	}
 }
 
 void MultiThread::start() {
@@ -58,6 +66,7 @@ void MultiThread::end() {
 		eventBigin[i] = nullptr;
 		eventEnd[i] = nullptr;
 	}
+	numThread = 0;
 }
 
 unsigned __stdcall MultiThread::thread(void* data) {
@@ -85,6 +94,14 @@ void MultiThread_NotSync::setFunc(void (*pf)(void)) {
 void MultiThread_NotSync::setThread() {
 	for (unsigned int i = 0; i < numThread; i++)
 		ThreadHandle[i] = (HANDLE*)_beginthreadex(NULL, 0, thread, &th[i], 0, NULL);
+
+	bool f = true;
+	while (f) {
+		f = false;
+		for (unsigned int i = 0; i < numThread; i++) {
+			if (!ThreadHandle[i])f = true;
+		}
+	}
 }
 
 void MultiThread_NotSync::start() {
@@ -105,6 +122,7 @@ void MultiThread_NotSync::end() {
 		CloseHandle(ThreadHandle[i]);
 		ThreadHandle[i] = nullptr;
 	}
+	numThread = 0;
 }
 
 unsigned __stdcall MultiThread_NotSync::thread(void* data) {
