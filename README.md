@@ -31,7 +31,7 @@ th.start();//スレッド生成
 
 //ループ
 
-if(Status())break;//全てのスレッドで処理が完了したらtrueが返る
+if(th.Status())break;//全てのスレッドで処理が完了したらtrueが返る
 
 //ループ
 
